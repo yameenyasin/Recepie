@@ -1,0 +1,12 @@
+
+<div class="card">
+    <img class="card-img-top" *ngIf="recepie.cover_photo" [src]="recepie.cover_photo" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{ recepie.title }}</h5>
+      <p class="card-text">{{ recepie.description }}</p>
+      <p>Preparation Time: {{recepie.preparation_time}}</p>
+      <p>Feeds how many:  {{recepie.feeds_this_many}}</p>
+    </div>
+
+    <div style="font-size:75%;cursor:pointer;padding:10px;" (click)="zoomClicked()">zoom</div>
+</div>

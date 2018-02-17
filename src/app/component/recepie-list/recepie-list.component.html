@@ -1,0 +1,53 @@
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#" (click)="toggleBackground()">Toggle Dark BG</a>
+    <a class="dropdown-item" href="#" (click)="toggleFontsize()">Toggle Font size</a>
+  </div>
+</div>
+
+<h1 [class.darkbg]="isDarkbg">These are our recepies</h1>
+
+<div class="card-deck" [style.font-size]="fontSize">
+  <app-recepie-summary [recepie]="recepie" *ngFor="let recepie of recepies" (zoomIn)="zoomInOnRecepie(recepie)"></app-recepie-summary>
+</div>
+
+<div class="card">
+    <h5 class="card-header">Add New recepie</h5>
+    <div class="card-body">
+        <form>
+            <div class="form-group">
+              <label for="inputRecepieTitle">Title</label>
+              <input type="text" class="form-control" id="inputRecepieTitle" name="title" [(ngModel)]="new_recepie_in_progress.title" aria-describedby="recepieTitleHelp" placeholder="Enter Recepie Title">
+              <small id="recepieTitleHelp" class="form-text text-muted">Enter a catchy title for your new Recepie so that everyone loves it.</small>
+            </div>
+            <div class="form-group">
+              <label for="inputRecepieDescription">Description</label>
+              <textarea rows="5" class="form-control" id="inputRecepieDescription" name="description" [(ngModel)]="new_recepie_in_progress.description" placeholder="Enter the Recepie Description here"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="inputFeedsHowMany">Feeds how many people</label>
+                <div class="input-group">
+                    <input type="number" class="form-control" id="inputFeedsHowMany" name="feedshowmany" [(ngModel)]="new_recepie_in_progress.feeds_this_many" placeholder="Feeds How many">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">People</div>
+                      </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPreparationTime">Preparation Time in minutes</label>  
+                <div class="input-group">
+                    <input type="number" class="form-control" id="inputPreparationTime" name="preparationtime" [(ngModel)]="new_recepie_in_progress.preparation_time" placeholder="Preparation Time in minutes">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Minutes</div>
+                      </div>
+                </div>
+            </div>
+            
+            <input type="button" class="btn btn-primary" value="Add Recepie" (click)="saveRecepie()">
+          </form>
+      
+    </div>
+  </div>
